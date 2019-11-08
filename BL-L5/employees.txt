@@ -1,0 +1,9 @@
+J.Snow 10000
+E.Stark 50000
+T.Lannister 80000
+J.Baratheon 100000
+N.Greyjoy 5000
+S.Clegane 1000
+J.Mormont 3000
+L.Tyrell 70000
+D.Seaworth 500
