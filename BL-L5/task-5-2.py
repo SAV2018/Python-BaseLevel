@@ -6,10 +6,15 @@
 # инициализация пременных
 filename = 'records.log'    # название файла
 
-with open(filename) as f:
-    lines = f.readlines()
-    print(f'\n{len(lines)} lines in file "{filename}"\n')
+try:
+    with open(filename) as f:
+        lines = f.readlines()
+        print(f'\n{len(lines)} lines in file "{filename}"\n')
 
-    for i, line in enumerate(lines, 1):
-        words = line.split() # разбиваем строку на слова
-        print(f'{len(words)} words in line {i}\t{words}')    # считаем кол-во слов в строке
+        for i, line in enumerate(lines, 1):
+            words = line.split() # разбиваем строку на слова
+            print(f'{len(words)} words in line {i}\t{words}')    # считаем кол-во слов в строке
+except FileNotFoundError:
+    print(f'\nError: file "{filename}" not found.')
+except IOError:
+    print('\nError: input-output error.')

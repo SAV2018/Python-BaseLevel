@@ -27,7 +27,7 @@ def sum_hours(hlist):
                 raise
     return hours
 
-filename = 'subjects.lst'
+filename = 'subjects1.lst'
 try:
     with open(filename) as f:
         dict = {}   # инициализируем словарь
@@ -54,7 +54,6 @@ try:
     print(f'\n\n{dict}')
 
 except FileNotFoundError:
-    print(f'Error: File "{filename}" not found.')
+    print(f'\nError: file "{filename}" not found.')
 except IOError:
-    print('Error: input-output error.')
-
+    print('\nError: input-output error.')
