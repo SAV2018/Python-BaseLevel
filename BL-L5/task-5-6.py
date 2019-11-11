@@ -11,34 +11,50 @@
 '''
 
 def sum_hours(hlist):
+    '''
+    Суммирование часов по предмету
+    :param hlist: список часов (лекции, практ., лаб.)
+    :return: сумма часов
+    '''
     hours = 0
+
     for h in hlist:
-        if (h == '—'):
-            continue
-        else:
+        if (h != '—'): # если параметр не пропущен
             try:
                 hours += int(h)
             except ValueError:
-                print(f'Incorrect value of hours "{h}"')
+                print(f'\nError: incorrect value of hours "{h}"', end='')
+                raise
     return hours
 
 filename = 'subjects.lst'
 try:
     with open(filename) as f:
-        for item in f:
-            print(item)
+        dict = {}   # инициализируем словарь
 
-            # удаляем 
+        # обрабатываем файл по строкам
+        for i, item in enumerate(f, 1):
+            print(item, end='')
+
+            # удаляем лишние символы из строки
             signatures = [':', '(л)', '(пр)', '(лаб)']
             for signature in signatures:
                 item = item.replace(signature, '')
+
+            # разбиваем строку на две части (название предмета и кол-во часов)
             subject, *hours = item.split()
-            print(subject, hours)
 
-            print(f'Сумма часов: {sum_hours(hours)}')
+            # добавляем значение в словарь
+            try:
+                dict[subject] = sum_hours(hours)
+            except ValueError:
+                print(f' in line #{i}')
+                exit(1)
 
+    print(f'\n\n{dict}')
 
 except FileNotFoundError:
     print(f'Error: File "{filename}" not found.')
 except IOError:
     print('Error: input-output error.')
+
