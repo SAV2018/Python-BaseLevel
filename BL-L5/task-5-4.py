@@ -12,16 +12,23 @@ Four — 4
 numerals_dict = {'One': 'Один', 'Two': 'Два', 'Three': 'Три', 'Four': 'Четыре', 'Five': 'Пять'}
 filename = 'numerals'
 
-# читаем из файла
-with open(f'{filename}.eng') as f:
-    numerals = f.readlines()
+try:
+    # читаем из файла
+    with open(f'{filename}.eng') as f:
+        numerals = f.readlines()
 
-    # меняем английские числительные на русские
-    numerals_rus = []
-    for element in numerals:
-        key, *others = element.split()  # выделяем первое слово в строке (англ.)
-        numerals_rus.append(element.replace(key, numerals_dict[key])) # меняем это слово в строке на русское из словаря
+        # меняем английские числительные на русские
+        numerals_rus = []
+        for element in numerals:
+            key, *others = element.split()  # выделяем первое слово в строке (англ.)
+            numerals_rus.append(element.replace(key, numerals_dict[key])) # меняем это слово в строке на русское из словаря
 
-# сохраняем в новый файл
-with open(f'{filename}.rus', 'w') as f:
-    f.writelines(numerals_rus)
+        # сохраняем в новый файл
+        with open(f'{filename}.rus', 'w') as f:
+            f.writelines(numerals_rus)
+
+except FileNotFoundError:
+    print(f'\nError: file "{filename}" not found.')
+except IOError:
+    print('\nError: input-output error.')
+

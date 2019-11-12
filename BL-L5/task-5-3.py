@@ -4,17 +4,23 @@
 Выполнить подсчет средней величины дохода сотрудников.
 '''
 
-print('\n------------------------------\nEnployees with salary < 20 000\n------------------------------')
-with open('employees.txt') as f:
-    employees = f.readlines()
+try:
+    with open('employees.txt') as f:
+        employees = f.readlines()
+        print('\n------------------------------\nEnployees with salary < 20 000\n------------------------------')
 
-    av_salary = 0
-    for employee in employees:
-        name, salary = employee.split()
-        av_salary += float(salary)
+        av_salary = 0
+        for employee in employees:
+            name, salary = employee.split()
+            av_salary += float(salary)
 
-        if float(salary) < 20000:
-            print(f'{name}')
+            if float(salary) < 20000:
+                print(f'{name}')
 
-print('------------------------------')
-print(f'Average salary: {av_salary/len(employees):.2f}')
+    print('------------------------------')
+    print(f'Average salary: {av_salary/len(employees):.2f}')
+
+except FileNotFoundError:
+    print('\nError: file not found.')
+except IOError:
+    print('\nError: input-output error.')
