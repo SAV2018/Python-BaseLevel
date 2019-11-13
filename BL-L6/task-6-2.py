@@ -7,8 +7,8 @@
 Например: 20м*5000м*25кг*5см = 12500 т.
 '''
 
-
 class Road:
+    ''' Класс расчёта массы асфальта для строительства дороги '''
     _length = 0
     _width = 0
 
@@ -18,7 +18,7 @@ class Road:
 
     def get_weight(self):
         weight_per_meter = 25 # масса 1 кв. метра асфальта толщиной 1 см.
-        thickness = 5 # толщина асфальта в см.
+        thickness = 5 # толщина слоя асфальта в см.
 
         return Road._length * Road._width * weight_per_meter * thickness
 

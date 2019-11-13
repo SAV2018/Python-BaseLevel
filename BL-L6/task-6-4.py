@@ -18,7 +18,7 @@ class Car:
     def __init__(self, name, color):
         self.name = name
         self.color = color
-        print(f'Новая машина: {self.name} (цвет {self.color})')
+        print(f'Новая машина: {self.name} (цвет {self.color}) {type(self)}')
 
     def go(self):
         print(f'{self.name}: Машина поехала.')
@@ -77,7 +77,7 @@ work_car.turn(0)
 work_car.show_speed(45)
 work_car.stop()
 
-print('\x1b[1m{}')
+print()
 sport_car = SportCar('"Спортивка"', 'красный')
 sport_car.go()
 sport_car.turn(0)

@@ -33,7 +33,7 @@ class Position(Worker):
     def get_total_income(self):
         return self._income['wage'] + self._income['bonus']
 
-
+# задаем позиции сотрудников
 positions = [
             Position('John', 'Walter', 'manager', {'wage': 1000, 'bonus': 100}),
             Position('Artur', 'Doyle', 'director', {'wage': 2500, 'bonus': 500})
