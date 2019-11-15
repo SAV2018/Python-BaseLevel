@@ -9,32 +9,37 @@ income (доход). Последний атрибут должен быть з�
 '''
 
 class Worker:
+    ''' Сотрудник '''
     name = None
     surname = None
     position = None
     _income = None
 
     def __init__(self, name, surname, position):
-        Worker.name = name
-        Worker.surname = surname
-        Worker.position = position
+        self.name = name
+        self.surname = surname
+        self.position = position
 
 
 class Position(Worker):
-
+    ''' Должность '''
     def __init__(self, name, surname, position, dict):
         super().__init__(name, surname, position)
-        Worker._income = dict
+        self._income = dict
 
     def get_full_name(self):
-        return Worker.name + ' ' + Worker.surname
+        return self.name + ' ' + self.surname
 
     def get_total_income(self):
-        return Worker._income['wage'] + Worker._income['bonus']
+        return self._income['wage'] + self._income['bonus']
 
+# задаем позиции сотрудников
+positions = [
+            Position('John', 'Walter', 'manager', {'wage': 1000, 'bonus': 100}),
+            Position('Artur', 'Doyle', 'director', {'wage': 2500, 'bonus': 500})
+            ]
 
-position_1 = Position('John', 'Walter', 'manager', {'wage': 1000, 'bonus': 100})
-position_2 = Position('Artur', 'Doyle', 'director', {'wage': 2500, 'bonus': 500})
-
-print(position_1.get_full_name())
-print(position_1.get_total_income())
+for position in positions:
+    print(f'\n{position.get_full_name()}')
+    print(position._income, end='')
+    print(' =>', position.get_total_income())
