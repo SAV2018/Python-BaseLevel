@@ -23,3 +23,53 @@
 Тогда метод make_order() вернет строку: *****\n*****\n*****.
 '''
 
+
+class OrganicCell:
+    ''' Клетка '''
+    next_id = 0
+
+    def __init__(self, n):
+        self.id = OrganicCell.next_id
+        OrganicCell.next_id += 1
+        self.n = n # count of cells
+
+    def __add__(self, other):
+        return self.n + other.n
+
+    def __sub__(self, other):
+        if self.n < other.n:
+            result = 'Too few cells to subtract.'
+        else:
+            result = self.n - other.n
+        return result
+
+    def __mul__(self, other):
+        return self.n * other.n
+
+    def __truediv__(self, other):
+        return round(self.n / other.n)
+
+    def __str__(self):
+        return f'Organic Cell #{self.id} {type(self)} of {self.n} cells'
+
+    def make_order(self, n):
+        rows = self.n // n
+        rest = self.n % n
+        print( f'{rows} {rest}')
+
+cell_1 = OrganicCell(200)
+cell_2 = OrganicCell(36)
+
+print(cell_1)
+print(cell_2)
+
+print('\nAdd:', cell_1 + cell_2)
+print(f'Sub (#{cell_1.id}-#{cell_2.id}):', cell_1 - cell_2)
+print(f'Sub (#{cell_2.id}-#{cell_1.id}):', cell_2 - cell_1)
+print('Mult:', cell_1 * cell_2)
+print('Div:', cell_1 / cell_2)
+
+cell_1.make_order(10)
+cell_1.make_order(12)
+cell_1.make_order(15)
+cell_1.make_order(20)
