@@ -52,12 +52,13 @@ class OrganicCell:
     def __str__(self):
         return f'Organic Cell #{self.id} {type(self)} of {self.n} cells'
 
-    def make_order(self, n):
-        rows = self.n // n
-        rest = self.n % n
-        print( f'{rows} {rest}')
+    def make_order(self, n): # n - кол-во * в строке
+        rows = self.n // n  # находим кол-во строк
+        rest = self.n % n   # находим кол-во * в посл.
+        print(f'\nOrganic Cell of {self.n} cells ({n} cells per row): ')
+        return ('*' * n + '\n') * rows + ('' if rest == 0 else '*' * rest + '\n')
 
-cell_1 = OrganicCell(200)
+cell_1 = OrganicCell(120)
 cell_2 = OrganicCell(36)
 
 print(cell_1)
@@ -69,7 +70,7 @@ print(f'Sub (#{cell_2.id}-#{cell_1.id}):', cell_2 - cell_1)
 print('Mult:', cell_1 * cell_2)
 print('Div:', cell_1 / cell_2)
 
-cell_1.make_order(10)
-cell_1.make_order(12)
-cell_1.make_order(15)
-cell_1.make_order(20)
+print(cell_1.make_order(20))
+print(cell_1.make_order(13))
+print(cell_1.make_order(15))
+print(cell_1.make_order(50))
