@@ -11,6 +11,7 @@
 '''
 
 class NonDigitException(Exception):
+
     def __init__(self, message):
         self.message = message
 
@@ -30,4 +31,4 @@ while True:
         print(err)
 
 
-print(f'\n{elements}')
+print(f'\nList of numbers:\n{elements}')
